@@ -50,8 +50,11 @@ router.post('/admin/login', check('username', 'Username is required').not().isEm
   }
 });
 
-// Register - Used only by DB Admin (Idanref)
-// NOTE: Must specify DB Admin password for the request to be sent
+
+// @POST - Register user as admin - Used only by DB Admin (Idanref)
+// NOTE: Must submit the DB Admin password in order for the request to be valid
+// @route - /admin/register
+// @access - Admin
 router.post('/admin/register', async (req, res) => {
   // if dbAdminPassword is not specified in req.body - return error
   if (!req.body.dbAdminPassword) {
