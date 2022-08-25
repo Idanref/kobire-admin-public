@@ -1,0 +1,26 @@
+{
+  "name": "kobire-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd ./config/test.env jest --watch --runInBand"
+  },
+  "author": "Idan Refaeli",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "env-cmd": "^10.1.0",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.8.0",
+    "mongoose": "^6.4.5",
+    "nodemon": "^2.0.19",
+    "validator": "^13.7.0"
+  }
+}

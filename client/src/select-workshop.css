@@ -1,0 +1,138 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:100,300';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.3.2/css/simple-line-icons.min.css';
+/* @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'; */
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:300,700';
+
+/* Container */
+.select {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0.5rem auto 1.5rem auto;
+  width: 60%;
+  height: 100%;
+  border-bottom: 0px;
+  border-radius: 3px;
+  font-size: 12px;
+  box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, 0.5);
+}
+
+/* Up/Right Arrows */
+.select > i.toggle {
+  position: absolute;
+  z-index: 4;
+  left: 2em;
+  top: 1.6em;
+  color: #222;
+}
+
+/* Entire select window */
+.select .title,
+.select .placeholder {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5em 2em;
+  background: #f4f4f4;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+/* Input of combobox */
+.select > input {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+}
+.select > input:checked ~ i.toggle.icon-arrow-down {
+  display: none;
+}
+.select > input:checked ~ i.toggle.icon-arrow-up {
+  display: block;
+}
+.select > input:checked div.options label.option .title {
+  display: none !important;
+}
+.select > input:not(:checked) {
+  z-index: 4;
+}
+.select > input:not(:checked) ~ label.option > span.title {
+  display: none;
+}
+.select > input:not(:checked) ~ i.toggle.icon-arrow-up {
+  display: none;
+}
+.select > input:not(:checked) ~ i.toggle.icon-arrow-down {
+  display: block;
+}
+
+/* Pleaceholder */
+.select > span.placeholder {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  color: #333;
+  font-weight: 400;
+  border-top: 0px;
+}
+
+/* Options */
+.select label.option {
+  display: block;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  /* transition: all 0s ease-out; */
+  color: #333;
+  font-size: 0.85rem;
+}
+.select label.option span.title {
+  position: relative;
+  z-index: 2;
+  /* transition: all 0.3s ease-out; */
+}
+
+/* Hover on options */
+.select label.option span.title:hover {
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Disable radio button for each option */
+.select label.option input {
+  display: none;
+}
+
+/* Change placeholder when option checked */
+.select label.option input:checked ~ span.title {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  top: 0px;
+  font-size: 12px;
+  border-top: 0px;
+  box-shadow: none;
+  color: inherit;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.select label.option input:disabled ~ span.title {
+  background: #f9f9f9 !important;
+  color: #aaa;
+}
+
+@media only screen and (max-width: 768px) {
+  .select {
+    width: 90%;
+  }
+}
