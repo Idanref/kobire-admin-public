@@ -51,16 +51,31 @@ router.post('/admin/login', check('username', 'Username is required').not().isEm
 });
 
 // Register - Used only by DB Admin (Idanref)
+// NOTE: Must specify DB Admin password for the request to be sent
 router.post('/admin/register', async (req, res) => {
-  const { username, password } = req.body;
+  // if dbAdminPassword is not specified in req.body - return error
+  if (!req.body.dbAdminPassword) {
+    return res.status(400).send('Database Admin Password Is Not Specified ');
+  }
+
+  const { username, password, dbAdminPassword } = req.body;
 
   try {
+    // Compare entered password with encrypted dbAdminPassword
+    const isDbAdminPasswordCorrect = await bcrypt.compare(dbAdminPassword, process.env.DB_ADMIN_PASSWORD);
+
+    // If entered password is incorrect, return error
+    if (!isDbAdminPasswordCorrect) {
+      return res.status(400).send('DB Admin Password Is Incorrect!');
+    }
+
+    // Entered password is correct
     let user = new AdminInfo({
       username: username.toLowerCase(),
       password,
     });
 
-    //Encrypt password
+    // Encrypt user password
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
     await user.save();
