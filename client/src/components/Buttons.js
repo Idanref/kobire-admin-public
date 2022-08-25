@@ -338,6 +338,24 @@ const Wrapper = styled.div`
   .pad-1 {
     padding: 1rem;
   }
+
+  @media only screen and (max-width: 768px) {
+    .buttons-container {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 405px) {
+    .buttons-container {
+      margin-bottom: 7rem;
+    }
+  }
+
+  @media only screen and (max-width: 332px) {
+    .buttons-container {
+      margin-bottom: 9rem;
+    }
+  }
 `;
 
 Buttons.propTypes = {

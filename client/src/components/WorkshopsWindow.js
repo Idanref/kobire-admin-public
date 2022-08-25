@@ -208,7 +208,7 @@ const Wrapper = styled.div`
     }
 
     .buttons-container button {
-      flex: 1 0 25%;
+      flex: 1 0 50%;
     }
 
     .bit-paybox {
