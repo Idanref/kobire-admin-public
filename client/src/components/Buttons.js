@@ -256,7 +256,7 @@ const Wrapper = styled.div`
 
   .buttons-container {
     padding: 1rem;
-    max-height: 20vh;
+    max-height: 20%;
     /* background: red; */
   }
 
@@ -337,24 +337,6 @@ const Wrapper = styled.div`
 
   .pad-1 {
     padding: 1rem;
-  }
-
-  @media only screen and (max-width: 768px) {
-    .buttons-container {
-      margin-bottom: 3rem;
-    }
-  }
-
-  @media only screen and (max-width: 405px) {
-    .buttons-container {
-      margin-bottom: 7rem;
-    }
-  }
-
-  @media only screen and (max-width: 332px) {
-    .buttons-container {
-      margin-bottom: 9rem;
-    }
   }
 `;
 
