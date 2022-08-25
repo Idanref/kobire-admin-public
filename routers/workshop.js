@@ -6,66 +6,6 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const { confirmationEmail, sendReceipt } = require('../emails/emails');
 
-// @GET - Get workshops by location (param=null -> fetch all workshops)
-// NOTE(!) - Will only return workshops with date >= now
-// @route - /workshops?location="Tel Aviv"
-// @access - Public
-router.get('/workshops', async (req, res) => {
-  try {
-    // If location not specified in URL
-    if (!req.query.location) {
-      const workshop = await Workshop.find({});
-      return res.json(workshop);
-    }
-    // Else - location not specified in URL
-    const workshop = await Workshop.find({ location: req.query.location.toLowerCase(), date: { $gte: new Date() } });
-    return res.json(workshop);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send('server error');
-  }
-});
-
-// @GET - Get workshop by ID
-// @route - /workshops/:workshopId
-// @access - Public
-router.get('/workshops/:workshopId', async (req, res) => {
-  try {
-    const workshop = await Workshop.findOne({ _id: req.params.workshopId })
-      .populate({
-        path: 'pending',
-        populate: { path: 'coupon', model: 'Coupon' },
-      })
-      .populate({
-        path: 'participants',
-        populate: { path: 'coupon', model: 'Coupon' },
-      });
-
-    if (!workshop) {
-      return res.status(404).send('Workshop not found');
-    }
-
-    return res.json(workshop);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send('server error');
-  }
-});
-
-// @GET - Get workshops locations
-// @route - /workshops/locations/all
-// @access - Public
-router.get('/workshops/locations/all', async (req, res) => {
-  try {
-    const locations = await Workshop.distinct('location');
-
-    return res.json(locations);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).send('server error');
-  }
-});
-
 // ========== ADMIN MODE ==========
 
 // @POST - Create new workshop (date field is: 'YYYY-MM-DD')
@@ -247,7 +187,71 @@ router.put('/workshops/soldout/:id', auth, async (req, res) => {
   }
 });
 
-// ==== DANGER ====
+// ========== PUBLIC ROUTES ==========
+
+// @GET - Get workshops by location (param=null -> fetch all workshops)
+// NOTE(!) - Will only return workshops with date >= now
+// @route - /workshops?location="Tel Aviv"
+// @access - Public
+router.get('/workshops', async (req, res) => {
+  try {
+    // If location not specified in URL
+    if (!req.query.location) {
+      const workshop = await Workshop.find({});
+      return res.json(workshop);
+    }
+    // Else - location not specified in URL
+    const workshop = await Workshop.find({ location: req.query.location.toLowerCase(), date: { $gte: new Date() } });
+    return res.json(workshop);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('server error');
+  }
+});
+
+// @GET - Get workshop by ID
+// @route - /workshops/:workshopId
+// @access - Public
+router.get('/workshops/:workshopId', async (req, res) => {
+  try {
+    const workshop = await Workshop.findOne({ _id: req.params.workshopId })
+      .populate({
+        path: 'pending',
+        populate: { path: 'coupon', model: 'Coupon' },
+      })
+      .populate({
+        path: 'participants',
+        populate: { path: 'coupon', model: 'Coupon' },
+      });
+
+    if (!workshop) {
+      return res.status(404).send('Workshop not found');
+    }
+
+    return res.json(workshop);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('server error');
+  }
+});
+
+// @GET - Get workshops locations
+// @route - /workshops/locations/all
+// @access - Public
+router.get('/workshops/locations/all', async (req, res) => {
+  try {
+    const locations = await Workshop.distinct('location');
+
+    return res.json(locations);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send('server error');
+  }
+});
+
+// ========== DANGER ZONE ==========
+
+// NOTE: Routes below are note used in production
 
 // @DELETE - Delete all participant from specific workshop
 // @route - /workshops/participants/:id
