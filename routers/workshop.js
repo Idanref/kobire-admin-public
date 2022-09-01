@@ -133,7 +133,9 @@ router.put('/workshops/approve/:workshopId/:pendingId', auth, async (req, res) =
   }
 });
 
-// @DELETE - Delete specific participant from specific workshop (takenSpots also updates)
+// @DELETE - Remove specific participant from specific workshop (in case of cancellation)
+// Note: Participant will be moved to 'cancelled' array
+// Note: takenSpots updates depending on the numOfTickets the client held
 // @route - /workshops
 // @access - Admin
 router.delete('/workshops/:workshopId/:participantId', auth, async (req, res) => {
@@ -153,6 +155,8 @@ router.delete('/workshops/:workshopId/:participantId', auth, async (req, res) =>
     // Update takenSpots and remove participant from array
     workshop.takenSpots -= participant.numOfTickets;
     workshop.participants.splice(removeIndex, 1);
+
+    workshop.cancelled.push(participant);
 
     await workshop.save();
 

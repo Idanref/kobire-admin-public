@@ -89,6 +89,30 @@ const workshopSchema = new mongoose.Schema({
       },
     },
   ],
+  cancelled: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+      },
+      phone: {
+        type: String,
+        required: true,
+      },
+      numOfTickets: {
+        type: Number,
+        required: true,
+      },
+      coupon: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Coupon',
+      },
+    },
+  ],
 });
 
 const Workshop = mongoose.model('Workshop', workshopSchema);
