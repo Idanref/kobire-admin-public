@@ -50,26 +50,38 @@ function sendReceiptEmailHtml(name, email, phone, numOfTickets, price, location,
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="3f35464e-02d1-45be-a2d7-a3a0178bb4a6" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
-        <td style="padding:0px 0px 0px 0px; line-height:30px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><h2 style="text-align: center"><span style="font-family: &quot;comic sans ms&quot;, cursive"><strong>!ברוך הבא</strong></span></h2><div></div></div></td>
+        <td style="padding:0px 0px 0px 0px; line-height:30px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><h2 style="text-align: center"><span style="font-family: &quot;comic sans ms&quot;, cursive"><strong>!ברוכים הבאים</strong></span></h2><div></div></div></td>
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="f4f02cb9-a889-4b45-9ac9-0baca7ba301e" data-mc-module-version="2019-10-22">
     <tbody>
       <tr>
-        <td style="padding:0px 0px 0px 0px; line-height:8px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><h3 style="text-align: center; font-family: inherit">,ברוכים הבאים</h3>
+        <td style="padding:0px 0px 0px 0px; line-height:8px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div>
 <h3 style="text-align: center; font-family: inherit"><br></h3>
-<h3 style="text-align: center; font-family: inherit">להלן פרטי ההזמנה לסדנת הצילום</h3>
+<h3 style="text-align: center; font-family: inherit">!תודה שהצטרפתם אלינו לסדנת הצילום</h3>
+<h3 style="text-align: center; font-family: inherit">נשמח לראותכם</h3>
+<h3 style="text-align: center; font-family: inherit"><br></h3>
+<h3 style="text-align: center; font-family: inherit">- להלן פרטי ההזמנה לסדנה -</h3>
 <h3 style="text-align: center; font-family: inherit"><br></h3>
 <h3 style="text-align: center; font-family: inherit">שם: ${name}</h3>
 <h3 style="text-align: center; font-family: inherit">${email} :אימייל</h3>
 <h3 style="text-align: center; font-family: inherit">${phone} :טלפון</h3>
 <h3 style="text-align: center; font-family: inherit"><br></h3>
 <h3 style="text-align: center; font-family: inherit">${numOfTickets} :מספר כרטיסים</h3>
-<h3 style="text-align: center; font-family: inherit">${price} :סה״כ מחיר</h3>
+<h3 style="text-align: center; font-family: inherit">₪${price} :סה״כ מחיר</h3>
 <h3 style="text-align: center; font-family: inherit"><br></h3>
 <h3 style="text-align: center; font-family: inherit">מיקום הסדנה: ${location}</h3>
 <h3 style="text-align: center; font-family: inherit">${date} :תאריך</h3>
-<h3 style="text-align: center; font-family: inherit">${time} :שעה</h3><div></div></div></td>
+<h3 style="text-align: center; font-family: inherit">${time} :שעה</h3>
+<h3 style="text-align: center; font-family: inherit"><br></h3>
+<h3 style="text-align: center; font-family: inherit">------</h3>
+<h3 style="text-align: center; font-family: inherit">שם המנחה: קובי רפאלי</h3>
+<h3 style="text-align: center; font-family: inherit">טלפון: 050-580-8282</h3>
+<h3 style="text-align: center; font-family: inherit">kobire@gmail.com :מייל</h3>
+<h3 style="text-align: center; font-family: inherit"><br></h3>
+<a href="https://www.instagram.com/kobi_refaeli/?hl=en"><h3 style="text-align: center; font-family: inherit">@kobire :חפשו אותי באינסטגרם</h3></a>
+<div></div></div></td>
+
       </tr>
     </tbody>
   </table></td>
