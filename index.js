@@ -4,7 +4,7 @@ require('./db/mongoose');
 const workshopRouter = require('./routers/workshop');
 const adminInfoRouter = require('./routers/adminInfo');
 const couponRouter = require('./routers/coupon');
-// const commentRouter = require('./routers/comment');
+const commentRouter = require('./routers/comment');
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(workshopRouter);
 app.use(adminInfoRouter);
 app.use(couponRouter);
-// app.use(commentRouter); // comments are not used in admin interface for now
+app.use(commentRouter);
 
 // Serving React app on {port}
 if (process.env.NODE_ENV === 'production') {
