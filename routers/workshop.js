@@ -311,29 +311,29 @@ router.delete('/workshops/:id', auth, async (req, res) => {
 // @GET - Delete Specific Workshop
 // @route - /testroutes/email/confirmation
 // @access - Admin
-router.get('/testroutes/email/confirmation', async (req, res) => {
-  try {
-    const user = {
-      name: 'עידן רפאלי',
-      email: 'idanref@gmail.com',
-      phone: '1234567890',
-      numOfTickets: 3,
-    };
+// router.get('/testroutes/email/confirmation', auth, async (req, res) => {
+//   try {
+//     const user = {
+//       name: 'עידן רפאלי',
+//       email: 'idanref@gmail.com',
+//       phone: '1234567890',
+//       numOfTickets: 3,
+//     };
 
-    const workshop = {
-      location: 'תל אביב',
-    };
+//     const workshop = {
+//       location: 'תל אביב',
+//     };
 
-    const price = 600;
-    const date = '12/10/2023';
-    const time = '10:30';
+//     const price = 600;
+//     const date = '12/10/2023';
+//     const time = '10:30';
 
-    sendReceipt(user.name, user.email, user.phone, user.numOfTickets, price, workshop.location, date, time);
+//     sendReceipt(user.name, user.email, user.phone, user.numOfTickets, price, workshop.location, date, time);
 
-    return res.status(200).send('Confirmation Email Message Sent!');
-  } catch (err) {
-    return res.status(500).send('Server Error!');
-  }
-});
+//     return res.status(200).send('Confirmation Email Message Sent!');
+//   } catch (err) {
+//     return res.status(500).send('Server Error!');
+//   }
+// });
 
 module.exports = router;

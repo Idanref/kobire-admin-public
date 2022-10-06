@@ -3,6 +3,7 @@ const router = new express.Router();
 const Comment = require('../models/comment');
 const Workshop = require('../models/workshop');
 const { check, validationResult } = require('express-validator');
+const auth = require('../middleware/auth');
 
 // const reviews = require('../data/commentsData');
 
@@ -74,7 +75,7 @@ router.post('/comments', async (req, res) => {
 // @DELETE - Delete all comments
 // @route - /comments
 // @access - Public
-router.delete('/comments', async (req, res) => {
+router.delete('/comments', auth, async (req, res) => {
   try {
     await Comment.deleteMany({});
     return res.status(201).send('Deleted Successfully');
@@ -87,7 +88,7 @@ router.delete('/comments', async (req, res) => {
 // @POST - Add multiple comments with fields: {name, date, content, reviewScore} from data
 // @route - /comments/multiple
 // @access - Public
-router.post('/comments/multiple', async (_, res) => {
+router.post('/comments/multiple', auth, async (_, res) => {
   reviews.forEach((element) => {
     // convert date in format 'YYYY-MM-DD' to Date()
     const currDate = element.date;
